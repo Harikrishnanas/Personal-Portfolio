@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Core Colors */
+  --bg-color: #000000; /* Absolute Black Obsidian */
+  --bg-secondary: #161616;
+  --bg-tertiary: #202020;
+  
+  /* Accent Colors - High Saturation */
+  --accent-violet: #8a2be2; /* Electric Violet */
+  --accent-cyan: #00ffff; /* Neon Cyan */
+  
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+  --text-tertiary: #606060;
+  
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'Fira Code', 'Roboto Mono', monospace;
+  
+  /* Layout */
+  --container-max-width: 1200px;
+  --border-radius-sm: 8px;
+  --border-radius-md: 16px;
+  --border-radius-lg: 24px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Lenis Recommended Styles */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Dynamic Cursor Lighting Overlay */
+.mouse-light-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 10;
+  /* We will dynamically set --mouse-x and --mouse-y in JS */
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(255, 255, 255, 0.05),
+    transparent 40%
+  );
+  mix-blend-mode: screen;
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+  background: rgba(22, 22, 22, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Custom Scrollbar for premium feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-color); 
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-secondary); 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-violet); 
+}
+
+/* Hide scrollbar for internal scrollable elements while keeping functionality */
+.custom-scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.custom-scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Base Utility Classes */
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-padding {
+  padding: 8rem 0;
+}
+
+/* Grid System for Bento */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.bento-item {
+  background: var(--bg-secondary);
+  border-radius: var(--border-radius-lg);
+  padding: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.bento-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px -10px rgba(138, 43, 226, 0.15);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.bento-item.wide {
+  grid-column: span 12;
+}
+
+@media (min-width: 768px) {
+  .bento-item.medium {
+    grid-column: span 6;
+  }
+}
+@media (min-width: 1024px) {
+  .bento-item.wide {
+    grid-column: span 8;
+  }
+  .bento-item.medium {
+    grid-column: span 6;
+  }
+  .bento-item.small {
+    grid-column: span 4;
+  }
+  .bento-item.full {
+    grid-column: span 12;
+  }
+}
+
+.section-title {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-accent {
+  color: var(--accent-cyan);
+}
+
+/* Liquid Chrome Effect */
+.liquid-chrome-text {
+  background: linear-gradient(
+    calc(180deg + (var(--mouse-x, 0) * 0.05deg)),
+    #555555 0%,
+    #ffffff 40%,
+    #cccccc 50%,
+    #ffffff 60%,
+    #444444 100%
+  );
+  background-size: 200% auto;
+  background-position: calc(var(--mouse-x, 0) * 0.1%) calc(var(--mouse-y, 0) * 0.1%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0px 4px 20px rgba(255, 255, 255, 0.15);
+}
