@@ -90,14 +90,11 @@ export default function FloatingCommandNode({ lenis }) {
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="p-4 border-b border-white/10 flex items-center gap-3">
-                <Command className="text-text-secondary" size={20} />
-                <input
-                  type="text"
-                  placeholder="Initiate teleportation sequence..."
-                  className="w-full bg-transparent border-none outline-none text-text-primary font-mono text-sm placeholder:text-text-tertiary"
-                  autoFocus
-                />
+              <div className="p-4 border-b border-white/10 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <Command className="text-text-secondary" size={20} />
+                  <span className="text-text-primary font-mono text-sm">Navigation Sequence</span>
+                </div>
                 <div className="flex gap-1 text-[10px] font-mono text-text-tertiary bg-white/5 px-2 py-1 rounded">
                   <span>ESC</span>
                 </div>

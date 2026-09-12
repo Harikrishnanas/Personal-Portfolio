@@ -32,7 +32,7 @@ const TimelineItem = ({ year, title, subtitle, details, isLast }) => (
   </div>
 );
 
-const MagneticButton = ({ children, href }) => {
+const MagneticButton = ({ children, href, target, rel }) => {
   const ref = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
   
@@ -61,6 +61,8 @@ const MagneticButton = ({ children, href }) => {
   return (
     <motion.a
       href={href}
+      target={target}
+      rel={rel}
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
@@ -126,7 +128,11 @@ const AboutContact = () => {
         </div>
         
         <div style={{ marginTop: '4rem', paddingBottom: '2rem' }}>
-          <MagneticButton href="mailto:harikrishnanas20054@gmail.com">
+          <MagneticButton 
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=harikrishnanas20054@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <motion.div 
               style={{
                 fontSize: 'clamp(2rem, 5vw, 4rem)',

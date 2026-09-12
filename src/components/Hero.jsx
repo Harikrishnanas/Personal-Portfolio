@@ -149,38 +149,28 @@ const Hero = () => {
         ref={heroContentRef} 
         className="container relative z-10 flex flex-col items-start justify-center h-full max-w-[90vw]"
       >
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="mb-4"
-        >
-          <ScrambleText 
-            text="SYSTEM ARCHITECTURE & VISUAL AI"
-            delay={200}
-            className="text-text-secondary font-mono text-sm md:text-base font-semibold tracking-[0.2em]"
-          />
-        </motion.div>
-
-        <h1 className="text-white w-[90vw] max-w-[1400px] uppercase block" style={{ 
-          fontSize: 'clamp(3rem, 11vw, 12rem)', // Brutalist, massive, 80% screen width proxy
+        <h1 className="text-white w-full max-w-[1400px] uppercase block px-2 md:px-0" style={{ 
+          fontSize: 'clamp(2.5rem, 10vw, 12rem)', // Highly responsive fluid typography
           fontWeight: 900, 
           lineHeight: 0.9,
           letterSpacing: '-0.05em',
-          marginLeft: '-0.05em',
-          marginBottom: '2rem'
+          marginLeft: '-0.02em',
+          marginBottom: '1.5rem'
         }}>
-          <ScrambleText text="HARIKRISHNAN AS" delay={400} />
+          <ScrambleText text="HARIKRISHNAN AS" delay={200} />
         </h1>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.0 }} // Reveals exactly after 600ms scramble
-          className="max-w-[1000px] mb-12"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.8 }}
+          className="max-w-[1000px] mb-12 flex flex-col gap-4 md:gap-6 px-2 md:px-0 w-full"
         >
-          <p className="liquid-chrome-text font-medium" style={{ fontSize: 'clamp(1.5rem, 3vw, 2.5rem)', lineHeight: 1.3 }}>
-            Architecting zero-latency backend systems and identity-consistent AI video models.
+          <p className="liquid-chrome-text font-medium" style={{ fontSize: 'clamp(1.2rem, 3.5vw, 2.5rem)', lineHeight: 1.3 }}>
+            Final Year B.Tech Student • Computer Science & Engineering
+          </p>
+          <p className="text-text-secondary font-mono text-sm md:text-base lg:text-lg tracking-wide max-w-2xl leading-relaxed">
+            Based at College of Engineering Kidangoor. Architecting scalable logic, engineering robust backend systems, and crafting dynamic interfaces. Transforming complex algorithmic challenges into fluid, seamless software solutions.
           </p>
         </motion.div>
 
