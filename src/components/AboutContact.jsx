@@ -6,12 +6,12 @@ const TimelineItem = ({ year, title, subtitle, details, isLast }) => (
   <div style={{ display: 'flex', gap: '2rem', marginBottom: isLast ? '0' : '3rem', position: 'relative' }}>
     {/* Timeline line */}
     {!isLast && <div style={{ position: 'absolute', left: '6px', top: '24px', bottom: '-48px', width: '2px', background: 'rgba(255,255,255,0.1)' }} />}
-    
+
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <div style={{ width: '14px', height: '14px', borderRadius: '50%', background: 'var(--accent-violet)', zIndex: 1, marginTop: '5px' }} />
     </div>
-    
-    <motion.div 
+
+    <motion.div
       initial={{ opacity: 0, x: -20 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: "-100px" }}
@@ -35,14 +35,14 @@ const TimelineItem = ({ year, title, subtitle, details, isLast }) => (
 const MagneticButton = ({ children, href, target, rel }) => {
   const ref = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
-  
+
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  
+
   const springConfig = { damping: 15, stiffness: 150, mass: 0.1 };
   const x = useSpring(mouseX, springConfig);
   const y = useSpring(mouseY, springConfig);
-  
+
   const handleMouseMove = (e) => {
     const { clientX, clientY } = e;
     const { left, top, width, height } = ref.current.getBoundingClientRect();
@@ -51,7 +51,7 @@ const MagneticButton = ({ children, href, target, rel }) => {
     mouseX.set((clientX - centerX) * 0.3); // Magnetic pull strength
     mouseY.set((clientY - centerY) * 0.3);
   };
-  
+
   const handleMouseLeave = () => {
     setIsHovered(false);
     mouseX.set(0);
@@ -85,13 +85,13 @@ const MagneticButton = ({ children, href, target, rel }) => {
 const AboutContact = () => {
   return (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem' }}>
-      
+
       {/* Timeline Section */}
       <div>
         <h2 className="section-title" style={{ fontSize: '2.5rem', marginBottom: '3rem' }}>Journey</h2>
-        
+
         <div style={{ position: 'relative' }}>
-          <TimelineItem 
+          <TimelineItem
             year="Jun 2025 – Jul 2025"
             title="Machine Learning Intern"
             subtitle="JYESTA Corporate Entity"
@@ -100,7 +100,7 @@ const AboutContact = () => {
               "Evaluated foundational regression models to extract actionable insights."
             ]}
           />
-          <TimelineItem 
+          <TimelineItem
             year="May 2026"
             title="AI/ML Intern"
             subtitle="Linnk Group"
@@ -109,7 +109,7 @@ const AboutContact = () => {
               "Tested and fine-tuned machine learning pipelines."
             ]}
           />
-          <TimelineItem 
+          <TimelineItem
             year="2023 – 2027"
             title="B.Tech in Computer Science"
             subtitle="College of Engineering Kidangoor (CGPA: 8.45)"
@@ -126,14 +126,14 @@ const AboutContact = () => {
             Currently seeking opportunities to architect high-performance solutions and engineer intelligent systems.
           </p>
         </div>
-        
+
         <div style={{ marginTop: '4rem', paddingBottom: '2rem' }}>
-          <MagneticButton 
+          <MagneticButton
             href="https://mail.google.com/mail/?view=cm&fs=1&to=harikrishnanas20054@gmail.com"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <motion.div 
+            <motion.div
               style={{
                 fontSize: 'clamp(2rem, 5vw, 4rem)',
                 fontWeight: 800,
@@ -148,14 +148,14 @@ const AboutContact = () => {
               Get in touch <ArrowUpRight size={48} strokeWidth={3} />
             </motion.div>
           </MagneticButton>
-          
+
           <div style={{ display: 'flex', gap: '2rem', marginTop: '3rem', fontFamily: 'var(--font-mono)' }}>
-            <a href="https://github.com/Harikrishnanas" target="_blank" rel="noreferrer" style={{ color: 'var(--text-secondary)', transition: 'color 0.3s' }} onMouseOver={e => e.target.style.color='var(--text-primary)'} onMouseOut={e => e.target.style.color='var(--text-secondary)'}>GitHub</a>
-            <a href="https://linkedin.com/in/Harikrishnan AS" target="_blank" rel="noreferrer" style={{ color: 'var(--text-secondary)', transition: 'color 0.3s' }} onMouseOver={e => e.target.style.color='var(--text-primary)'} onMouseOut={e => e.target.style.color='var(--text-secondary)'}>LinkedIn</a>
+            <a href="https://github.com/Harikrishnanas" target="_blank" rel="noreferrer" style={{ color: 'var(--text-secondary)', transition: 'color 0.3s' }} onMouseOver={e => e.target.style.color = 'var(--text-primary)'} onMouseOut={e => e.target.style.color = 'var(--text-secondary)'}>GitHub</a>
+            <a href="https://www.linkedin.com/in/harikrishnan-a-s-82a0a0326/" target="_blank" rel="noreferrer" style={{ color: 'var(--text-secondary)', transition: 'color 0.3s' }} onMouseOver={e => e.target.style.color = 'var(--text-primary)'} onMouseOut={e => e.target.style.color = 'var(--text-secondary)'}>LinkedIn</a>
           </div>
         </div>
       </div>
-      
+
     </div>
   );
 };
